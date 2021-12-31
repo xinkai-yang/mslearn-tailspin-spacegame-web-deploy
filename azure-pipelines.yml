@@ -94,7 +94,7 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: Resource Manager - Tailspin - Space Game
+              azureSubscription: 'Resource Manager - Tailspin - Space Game-Space Game - Web - Multiple Stage-Space Game - web - Functional tests'
               appName: $(WebAppNameTest)
               package: $(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip
   - job: RunUITests
@@ -141,6 +141,6 @@ stages:
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
-              azureSubscription: Resource Manager - Tailspin - Space Game
+              azureSubscription: 'Resource Manager - Tailspin - Space Game-Space Game - Web - Multiple Stage-Space Game - web - Functional tests'
               appName: $(WebAppNameStaging)
               package: $(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip
