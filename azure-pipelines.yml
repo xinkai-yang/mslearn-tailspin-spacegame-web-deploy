@@ -10,7 +10,7 @@ stages:
   - job: Build
     displayName: Build job
     pool:
-      vmImage: 'buntu-20.04'
+      vmImage: 'ubuntu-20.04'
       demands:
       - npm
     variables:
