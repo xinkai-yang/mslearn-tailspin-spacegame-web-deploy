@@ -10,9 +10,9 @@ stages:
   - job: Build
     displayName: Build job
     pool:
-      vmImage: ubuntu-20.04
-      #demands:
-      #- npm
+      vmImage: 'buntu-20.04'
+      demands:
+      - npm
     variables:
       wwwrootDir: Tailspin.SpaceGame.Web/wwwroot
       dotnetSdkVersion: 5.x
