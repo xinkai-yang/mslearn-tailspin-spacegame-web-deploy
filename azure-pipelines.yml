@@ -85,21 +85,8 @@ stages:
             displayName: 'Azure App Service Deploy: website'
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game - blue-green'
-              deployToSlotOrASE: "true"
-              resourceGroupName: tailspin-space-game-rg-blue-green
-              slotName: swap
               appName: '$(WebAppNameDev)'
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
-
-          - task: AzureAppServiceManage@0
-            displayName: Swap deployment slots
-            inputs:
-              azureSubscription: Resource Manager - Tailspin - Space Game - blue-green
-              resourceGroupName: tailspin-space-game-rg-blue-green
-              webAppName: $(WebAppNameStaging)
-              sourceSlot: swap
-              targetSlot: production
-              action: Swap Slots
 
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
@@ -145,4 +132,16 @@ stages:
             inputs:
               azureSubscription: 'Resource Manager - Tailspin - Space Game - blue-green'
               appName: '$(WebAppNameStaging)'
+              deployToSlotOrASE: "true"
+              resourceGroupName: tailspin-space-game-rg-blue-green
+              slotName: swap
               package: '$(Pipeline.Workspace)/drop/$(buildConfiguration)/*.zip'
+          - task: AzureAppServiceManage@0
+            displayName: Swap deployment slots
+            inputs:
+              azureSubscription: Resource Manager - Tailspin - Space Game - blue-green
+              resourceGroupName: tailspin-space-game-rg-blue-green
+              webAppName: $(WebAppNameStaging)
+              sourceSlot: swap
+              targetSlot: production
+              action: Swap Slots
